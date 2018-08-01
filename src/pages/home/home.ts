@@ -15,7 +15,7 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController
-    ,public http: HttpClient
+    , public http: HttpClient
   ) {
     this.url = "https://jsonplaceholder.typicode.com/posts";
     this.getData();
@@ -25,7 +25,25 @@ export class HomePage {
     this.data = this.http.get(this.url);
     this.data.subscribe(data => {
       this.items = data;
-    })
+    });
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    this.data.subscribe(data => {
+      this.items = data;
+      refresher.complete();
+    });
+  }
+
+  doInfinite(infiniteScroll) {
+    console.log('Begin async operation');
+    this.data = this.http.get(this.url);
+    this.data.subscribe(data => {
+      this.items = this.items.concat(data);
+      infiniteScroll.complete();
+    });
   }
 
 }
