@@ -6,9 +6,19 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of items" col-6 no-padding>
+        <ion-card>
+          <ion-card-header>
+            {{ item.title }}
+          </ion-card-header>
+          <ion-card-content class="fixline">
+            {{ item.body }}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
