@@ -1,0 +1,7 @@
+{
+  "name": "t15pullrefresh",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
